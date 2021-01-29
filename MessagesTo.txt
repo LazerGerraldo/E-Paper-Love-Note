@@ -1,0 +1,4 @@
+Fill this file with messages
+A new message on each line
+Put this file in /home/pi/
+Keep a return at the end of the file

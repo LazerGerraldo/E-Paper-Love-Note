@@ -1,0 +1,6 @@
+display/*
+__pycache__
+lib/waveshare_epd/*.so
+lib/waveshare_epd/__pycache__
+log
+log/*

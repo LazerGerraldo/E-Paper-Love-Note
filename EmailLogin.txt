@@ -1,0 +1,8 @@
+//Place this file in the pi directory /home/pi/ delete the commented lines, 
+//replace YOUR_EMAIL_ADDRESS with your email address, 
+//replace YOUR_EMAIL_PASSWORD with your email password
+//and replace YOUR_PERSONAL_EMAIL with your email address
+// you will be sending messages from, this helps the code look for the specific address
+YOUR_EMAIL_ADDRESS
+YOUR_EMAIL_PASSWORD
+YOUR_PERSONAL_EMAIL
