@@ -1,7 +1,7 @@
 # Smart Love Note 
 This was an anniversary project for my wonderful girlfriend. Using a raspberry pi zero and a 2.9 inch e-paper display, the device output a message from the stored message file to the display. Updating multiple times a day with the ability to override the scheduled love note display. The stored text file can be added to or overridden with a unique message for a set time period that does not get saved to the love note file.
 
-![heart shape with electronic hardware](https://github.com/LazerGerraldo/E-Paper-Love-Note/blob/master/miscMedia/Early%20Example.jpg)
+![heart shape with electronic hardware](https://raw.githubusercontent.com/LazerGerraldo/E-Paper-Love-Note/main/miscMedia/Early%20Example.jpg)
 
 ## Table of Contents
 - [Code Overview](#Code-Overview)
