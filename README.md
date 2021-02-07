@@ -1,10 +1,11 @@
 # Smart Love Note 
-This was an anniversary project for my wonderful girlfriend. Using a raspberry pi zero and a 2.9 inch e-paper display, the device output a message from the stored message file to the display. Updating multiple times a day with the ability to override the scheduled love note display. The stored text file can be added to or overridden with a unique message for a set time period that does not get saved to the love note file.
 
-![heart shape with electronic hardware](https://raw.githubusercontent.com/LazerGerraldo/E-Paper-Love-Note/main/miscMedia/Early%20Example.jpg)
+This was an anniversary project for my wonderful girlfriend. The device uses a raspberry pi zero and a 2.9 inch e-paper display and outputs various messages from the pi. The stored love note text file, which has several messages that randomly cycle, can be added to or temporarily overridden with a unique message that is not saved to the stored file. The mode of operation depends on the time of day; the device is capable of displaying messages for morning mode (set morning messages), random message mode (cycle through stored messages), evening mode (set evening messages), and an override mode (temporary message display).
+
+![heart shape with electronic hardware](https://raw.githubusercontent.com/LazerGerraldo/E-Paper-Love-Note/main/miscMedia/FinishedProductBlank.jpg)
 
 ## Table of Contents
-- [Code Overview](#Code-Overview)
+- [Code Overview](#Code)
     - [Display Interface](#Display-Interface)
     - [Email](#Email)
 - [Hardware](#E-Paper-Display)
@@ -12,17 +13,17 @@ This was an anniversary project for my wonderful girlfriend. Using a raspberry p
     - [E-Paper Display](#E-Paper-Display)
     - [Case](#Case)
 
-## Code
+## Code 
 
 ## Display Interface
-Interfacing with the display was a difficult part of coding for me, and out of my comfort zone for the most part. I had a lot of help from a software engineering roommate and the manufacture website for the model of e-Paper display I had, the [2.9inch e-Paper Module B](https://www.waveshare.com/wiki/2.9inch_e-Paper_Module_(B)). Using the given example code for the display, I had a solid foundation for starting my love note output. Rather than creating something from scratch, I widdled down the parts of the example code that worked for me.
+Interfacing with the display was a difficult part of coding for me, and out of my comfort zone for the most part. I had a lot of help from a software engineering roommate and the manufacture website for the model of e-Paper display I had, the [2.9inch e-Paper Module B](https://www.waveshare.com/wiki/2.9inch_e-Paper_Module_(B)). Using the given example code for the display, I had a solid foundation for starting the love note output. Rather than creating something from scratch, I widdled down the parts of the example code that worked for this project.
 
 ## Email   
-I started learning about how to pull emails from the Gmail client.
-Using an article by [Humberto Rochas,](https://humberto.io/blog/sending-and-receiving-emails-with-python/) on sending and receiving emails with python gave me a great start for getting emails from gmail to python. 
+I started learning about how to pull emails from the Gmail client using python.
+Using an article by [Humberto Rochas,](https://humberto.io/blog/sending-and-receiving-emails-with-python/) that focused on sending and receiving emails with python gave me a great start for getting emails from Gmail to python. 
 
-In order to get past Googles security I had to grant less secure app access. To do that I navigated to 
-````Google Account Settings > Security > Less Secure App Access ```` at the bottom of the page, set that to __on__. This got me past the ````[AUTHENTICATIONFAILED] Invalid credentials (Failure)```` error that Rochas example was giving me. 
+In order to get past Googles security I had to grant the account less secure app access. To do that I navigated to 
+````Google Account Settings > Security > Less Secure App Access ```` at the bottom of the page, set that to __on__. This got me past the ````[AUTHENTICATIONFAILED] Invalid credentials (Failure)```` error that Rochas example was giving me when running their example. 
 
 As for using the IMAP python function I found [this article](https://github.com/ikvk/imap_tools) very helpful with IMAP formatting. From there I was able to find a way to pull emails filtered by my personal email.
 
@@ -39,13 +40,13 @@ This code needs the file EmailLogin.txt that should be saved in /home/pi/ direct
 I used a raspberry pi zero and purchased an AIO kit from CanaKit. The package comes with an power cord and a formatted SD card with NOOBS OS to save some time. 
 
 ## Pi Setup
-Following the [SSH guide from  the raspberry pi website](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md) I was able to get a SSH key from the Pi to associate with github in order to clone and push changes if needed. The following commands were used to copy the pi SSH key and add it to my account on github. The SSH repository link is found under the code tab on the main project github page.
+Following the [SSH guide from the raspberry pi website](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md) I was able to get a SSH key from the Pi to associate with github in order to clone and push changes if needed. The following commands were used to copy the pi SSH key and add it to my account on GitHub. The SSH repository link is found under the code tab on the main project GitHub page.
 ````
 cd .ssh
 cat id_rsa.pub
 ````
 
-After adding the API key to my github account page I cloned the repository on the pi with the following commands.
+After adding the API key to my GitHub account page I cloned the repository on the pi with the following commands.
 
 ````
 sudo apt-get install git
@@ -65,7 +66,7 @@ sudo pip install RPi.GPIO
 sudo vim /etc/rc.local
 added line in rc.local
 ````
-In order for the pi to start the program on boot the command `python3 /home/pi/E-Paper-Love-Note/main.py` was added to the file `rc.local` as shown in the tab below.
+In order for the pi to start the program on boot the line `python3 /home/pi/E-Paper-Love-Note/main.py` was added to the file `rc.local` as shown in the tab below.
 
 <details>
   <summary>rc.local file changes</summary>
@@ -94,7 +95,7 @@ In order for the pi to start the program on boot the command `python3 /home/pi/E
 The pi did not realize what the correct time zone was. After changing the time zone with `sudo raspi-config` the program worked.
 
 ## E-Paper Display 
-The display hooked right up to the pi. There was not a lot of documentation as to what pins on the display connected to the pi. I found the [raspberry pi GPIO pin-out](miscMedia/gpio.png), and followed the manufacture website as well as the table below.
+There was not a lot of documentation as to what pins on the display header, connect to the pi. I found the [raspberry pi GPIO pin-out](https://github.com/LazerGerraldo/E-Paper-Love-Note/blob/main/miscMedia/gpio.png?raw=true), and followed the manufacture website as well as the table below.
 
 
 | Function   | Wire Color | Pi Pin Number |
@@ -108,13 +109,10 @@ The display hooked right up to the pi. There was not a lot of documentation as t
 | RST        |  White             |       11      |
 | BUSY       |  Purple            |       18      |
 
-
 *I actually had the ground wire connected to pin 03 GPIO02 rather than the ground during the whole testing process.
 
 ## Case
 
-This was one of the areas that I was more comfortable in at the beginning of this project. I used OnShape a free CAD software with tons of video tutorials online. You can see the project [case design files here](https://cad.onshape.com/documents/de2a48e93b168b76a3072b45/w/6d8c1324762ceb9f50b6db77/e/b73ae14c0cc5d6f088d5bd19).
+This was one of the areas that I was more comfortable in at the beginning of this project. I used OnShape a free CAD software with tons of video tutorials online. You can see the project [case design files here](https://cad.onshape.com/documents/de2a48e93b168b76a3072b45/w/6d8c1324762ceb9f50b6db77/e/b73ae14c0cc5d6f088d5bd19) and export any of the .stl files for 3D printing.
 
-Most of the design process involved measurements. Most of my time was spent using calipers and measuring things multiple times, however these schematics for the [raspberry pi zero](https://i.stack.imgur.com/LHeqV.png), and the [e-Paper display](https://www.waveshare.com/img/devkit/LCD/2.9inch-e-Paper-Module/2.9inch-e-Paper-Module-size.jpg) from the manufacture website were very helpful. The display was on a PCB with standoffs making the height measurements a bit difficult.
-
-Looking at using 3x "hex socket head countersunk screw m3 x 8mm" to attach the two parts of the case together two in each corner and one at the base of the heart. And threaded inserts.
+Most of the design process involved measurements. Most of my time was spent using calipers and measuring things multiple times, however these schematics for the [raspberry pi zero](https://i.stack.imgur.com/LHeqV.png), and the [e-Paper display](https://www.waveshare.com/img/devkit/LCD/2.9inch-e-Paper-Module/2.9inch-e-Paper-Module-size.jpg) from the manufacture website were very helpful. The display was on a PCB with standoffs making the height measurements a bit difficult. Next time I will do more sketching and designing before working on the CAD model. I used 3x hex socket head countersunk screw m3 x 8mm to attach the two parts of the case together two in each corner and one at the base of the heart.
