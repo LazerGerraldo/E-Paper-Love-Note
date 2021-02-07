@@ -1,6 +1,6 @@
 # Smart Love Note 
 
-This was an anniversary project for my wonderful girlfriend. The device uses a raspberry pi zero and a 2.9 inch e-paper display and outputs various messages from the pi. The stored love note text file, which has several messages that randomly cycle, can be added to or temporarily overridden with a unique message that is not saved to the stored file. The mode of operation depends on the time of day; the device is capable of displaying messages for morning mode (set morning messages), random message mode (cycle through stored messages), evening mode (set evening messages), and an override mode (temporary message display).
+This was an anniversary project for my wonderful girlfriend. The device outputs various messages from a raspberry pi zero to a 2.9-inch e-paper display. The stored love note text file, which has several messages that randomly cycle, can be added to or temporarily overridden with a unique message that is not saved to the stored file. The mode of operation depends on the time of day; the device is capable of displaying messages for morning mode (set morning messages), random message mode (cycle through stored messages), evening mode (set evening messages), and an override mode (temporary message display).
 
 ![heart shape with electronic hardware](https://raw.githubusercontent.com/LazerGerraldo/E-Paper-Love-Note/main/miscMedia/FinishedProductBlank.jpg)
 
